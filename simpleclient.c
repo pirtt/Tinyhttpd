@@ -11,12 +11,12 @@ int main(int argc, char *argv[])
     int len;
     struct sockaddr_in address;
     int result;
-    char ch = 'A';
+    char send_str[1024] = "GET / HTTP/1.1\r\n";
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = inet_addr("127.0.0.1");
-    address.sin_port = htons(9734);
+    address.sin_port = htons(4000);
     len = sizeof(address);
     result = connect(sockfd, (struct sockaddr *)&address, len);
 
@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
         perror("oops: client1");
         exit(1);
     }
-    write(sockfd, &ch, 1);
-    read(sockfd, &ch, 1);
-    printf("char from server = %c\n", ch);
+    write(sockfd, send_str, 16);
+    read(sockfd, send_str, 1024);
+    printf("char from server = %s\n", send_str);
     close(sockfd);
     exit(0);
 }
