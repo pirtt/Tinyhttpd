@@ -53,4 +53,5 @@ Compile for Linux
 </p>
 <p>&nbsp; &nbsp; （10） 关闭与浏览器的连接，完成了一次 HTTP 请求与回应，因为 HTTP 是无连接的。</p>
 <p><br>
+	version 1.0 2017
 </p>
